@@ -6,20 +6,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val names: List<String>) : RecyclerView.Adapter<MyAdapter.NameViewHolder>() {
+class MyAdapter(private val names: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NameViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_name, parent, false)
-        return NameViewHolder(view)
+        return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NameViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.nameText.text = names[position]
     }
 
     override fun getItemCount(): Int = names.size
 
-    class NameViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameText: TextView = view.findViewById(R.id.nameText)
-    }
 }
